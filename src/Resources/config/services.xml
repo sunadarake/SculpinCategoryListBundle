@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+  <parameters>
+    <parameter key="sculpin_category_list.generator.class">Darake\SculpinCategoryListBundle\CategoryListGenerator</parameter>
+  </parameters>
+
+  <services>
+    <service id="sculpin_category_list.generator" class="%sculpin_category_list.generator.class%">
+      <argument type="service" id="sculpin.site_configuration" />
+      <argument>%sculpin_category_list.taxonomy_types%</argument>
+      <tag name="kernel.event_subscriber" />
+    </service>
+  </services>
+
+</container>
